@@ -6,7 +6,7 @@ let wordsArray = [
   `house`, `cat`, `hat`, `backpack`, `car`, `stool`, `shirt`, `wardrobe`, `pillow`, `blanket`, `freedom`
 ];
 
-function getRandomWord() {
+function getRandomWord(callback) {
   const randomNumber = Math.floor(Math.random() * wordsArray.length);
   const initialWord = wordsArray[randomNumber];
   const url = `https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20200705T154052Z.d247ab4b4f1f7584.52e72b4b03ab1519037d82a7c979b1872f4d3b93&lang=en-ru&text=${initialWord}`;
@@ -20,13 +20,24 @@ function getRandomWord() {
       }
       const randomSynonymNumber = Math.floor(Math.random() * synonymsArray.length);
       const guessedWord = synonymsArray[randomSynonymNumber];
-      return guessedWord;
+      console.log(guessedWord + 1);
     });
   });
-
+  //console.log(guessedWord);
 }
+
+getRandomWord();
+//let word = getRandomWord();
+// console.log(word);
+
+setTimeout(function() {
+  //console.log(word);
+  //hangmanGame(chatId, word.toLowerCase());
+}, 1000);
+
+return;
 /////
-let word = getRandomWord().toLowerCase();
+//let word = getRandomWord().toLowerCase();
 let answerArray = [];
 for (let i = 0; i < word.length; i++) {
   answerArray[i] = `_`;
